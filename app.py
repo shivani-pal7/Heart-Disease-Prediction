@@ -53,8 +53,7 @@ if st.button('Predict'):
         columns=expected_columns,
         fill_value=0
     )
-    st.write("Input after encoding:", input_df)
-    st.write("Expected columns:", expected_columns)
+    
     # Scaling
     scaled_input = scaler.transform(input_df)
 
