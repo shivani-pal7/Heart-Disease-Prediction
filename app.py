@@ -30,30 +30,31 @@ st_splope=st.selectbox('ST Slope',['Up','Flat','Down'])
 if st.button('Predict'):
 
     raw_input = {
-        'Age': age,
-        'Sex': sex,
-        'Chest Pain Type': chest_pain_type,
-        'Resting Blood Pressure (mm Hg)': resting_blood_pressure,
-        'Cholesterol (mg/dL)': colesterol,
-        'Fasting Blood Sugar > 120 mg/dL': fasting_blood_sugar,
-        'Resting ECG': resting_ecg,
-        'Maximum Heart Rate Achieved': max_HR,
-        'Exercise Induced Angina': exercise_induced_angina,
-        'Oldpeak (ST depression induced by exercise)': oldpeak,
-        'ST Slope': st_splope
-    }
+    'Age': age,
+    'Sex': sex,
+    'Chest Pain Type': chest_pain_type,
+    'RestingBP': resting_blood_pressure,
+    'Cholesterol': colesterol,
+    'FastingBS': fasting_blood_sugar,
+    'RestingECG': resting_ecg,
+    'MaxHR': max_HR,
+    'ExerciseAngina': exercise_induced_angina,
+    'Oldpeak': oldpeak,
+    'ST_Slope': st_splope
+}
 
     input_df = pd.DataFrame([raw_input])
 
     # One-Hot Encoding
-    input_df = pd.get_dummies(input_df)
+    input_df = pd.get_dummies(input_df, drop_first=True)
 
     # Match training columns
     input_df = input_df.reindex(
         columns=expected_columns,
         fill_value=0
     )
-
+    st.write("Input after encoding:", input_df)
+    st.write("Expected columns:", expected_columns)
     # Scaling
     scaled_input = scaler.transform(input_df)
 
