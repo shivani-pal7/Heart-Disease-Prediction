@@ -4,8 +4,8 @@ import pandas as pd
 import joblib
 
 model=joblib.load('Heart_Logistic_Regression.pkl')
-scaler=joblib.load('Heart_Scaler.pkl')
-expected_columns=joblib.load('Heart_Columns.pkl')
+scaler=joblib.load('Heart_scaler.pkl')
+expected_columns=joblib.load('Heart_columns.pkl')
 
 
 
